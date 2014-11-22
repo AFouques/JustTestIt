@@ -11,7 +11,6 @@ import android.view.View;
 public class MainActivity extends Activity {
 
     private View batteryLevelView;
-    private BatteryWatcher watcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +24,20 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        initBatteryWatcher();
+        updateBatteryLevel(getCurrentBatteryWatcher());
+    }
 
+    private BatteryWatcher getCurrentBatteryWatcher() {
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = this.registerReceiver(null, intentFilter);
+        return new BatteryWatcher(batteryStatus);
+    }
+
+    private void updateBatteryLevel(BatteryWatcher watcher) {
         if (watcher.getColorAccordingToBatteryLevel() == 1) {
             batteryLevelView.setBackgroundColor(Color.GREEN);
         } else {
             batteryLevelView.setBackgroundColor(Color.RED);
         }
-    }
-
-    private void initBatteryWatcher() {
-        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-        Intent batteryStatus = this.registerReceiver(null, intentFilter);
-        watcher = new BatteryWatcher(batteryStatus);
     }
 }
