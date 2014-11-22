@@ -18,5 +18,7 @@ allprojects {
         maven {
             url "http://ci.novoda.com/maven/releases" // THESE 3 LINES NEED ADDING
         }
+        // Genymotion Java API
+        maven { url "http://api.genymotion.com/repositories/releases/" }
     }
 }

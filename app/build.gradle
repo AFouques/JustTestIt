@@ -52,6 +52,9 @@ dependencies {
 
     androidTestCompile "com.google.android:android-espresso-bundled:1.1.0-SNAPSHOT"
 
+    // Genymotion Java API
+    androidTestCompile "com.genymotion.api:genymotion-api:1.0.0"
+
     androidTestCompile('org.robolectric:robolectric:2.3') {
         exclude module: 'classworlds'
         exclude module: 'commons-logging'
