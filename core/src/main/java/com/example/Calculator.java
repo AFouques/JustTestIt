@@ -1,4 +1,4 @@
-package com.genymobile.testit;
+package com.example;
 
 public class Calculator {
 

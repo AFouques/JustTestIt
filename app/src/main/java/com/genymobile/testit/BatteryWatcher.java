@@ -3,6 +3,8 @@ package com.genymobile.testit;
 import android.content.Intent;
 import android.os.BatteryManager;
 
+import com.example.Calculator;
+
 public class BatteryWatcher {
 
     private final Intent batteryStatus;
