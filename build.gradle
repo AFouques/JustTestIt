@@ -11,12 +11,3 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
-allprojects {
-    repositories {
-        jcenter()
-        maven {
-            url "http://ci.novoda.com/maven/releases" // THESE 3 LINES NEED ADDING
-        }
-    }
-}

@@ -1,4 +1,4 @@
-package com.example;
+package com.genymobile.testit;
 
 public class Calculator {
 
@@ -16,10 +16,10 @@ public class Calculator {
         return value - rightOperande;
     }
 
-    public int multiply(int rightOperande) throws ArithmeticException {
+    public float divide(float rightOperande) throws ArithmeticException {
         if (rightOperande == 0) {
             throw new ArithmeticException();
         }
-        return value * rightOperande;
+        return value / rightOperande;
     }
 }
