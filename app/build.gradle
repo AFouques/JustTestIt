@@ -1,4 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'robolectric'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.robolectric:robolectric-gradle-plugin:0.12.+'
+    }
+}
 
 android {
     compileSdkVersion 21
@@ -10,6 +20,7 @@ android {
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
     }
     buildTypes {
         release {
@@ -26,8 +37,16 @@ android {
     }
 }
 
+robolectric {
+    include '**/*Test.class'
+    exclude '**/espresso/**/*.class'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':core')
-}
 
+    androidTestCompile('junit:junit:4.12-beta-2')
+
+    androidTestCompile('org.robolectric:robolectric:2.3')
+}
